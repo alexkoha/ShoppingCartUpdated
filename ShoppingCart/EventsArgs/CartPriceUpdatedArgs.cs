@@ -4,6 +4,11 @@ using ShoppingCart.Models;
 
 namespace ShoppingCart.EventsArgs
 {
+    /*
+     * Product already has the chain id, so why limit your property names to specific chains?
+    Why limit yourself to three when you can just have a collection of cart objects?
+    Seems to me that this is what your model is missing.
+    */
     public class CartPriceUpdatedArgs : EventArgs
     {
         public IEnumerable<Product> MahsaneyHashookExpensiveProducts { get; set; }

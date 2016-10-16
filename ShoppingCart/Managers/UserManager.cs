@@ -8,6 +8,10 @@ using ShoppingCart.Models;
 
 namespace ShoppingCart.Managers
 {
+    /*
+     * You have a class called UserManaged which actually managed the cart, and users
+     * Consider : https://en.wikipedia.org/wiki/Single_responsibility_principle
+     */
     public sealed class UserManager : IManager
     {
         enum PriceMode

@@ -21,6 +21,12 @@ namespace ShoppingCart.Engines
             _fileSerializationName = "Users.dat";
             LoadUsers();
         }
+
+        /*
+         * Bad. When your instance is finalized- you do not have a way to know in which state your references are.
+         * Never use finalizer unless the type directly has  unmanaged resources whose lifecycle is hosted by the class which is finalized.
+         */
+
         ~UsersEngine()
         {
             SaveUsers();
@@ -39,6 +45,7 @@ namespace ShoppingCart.Engines
                 formatter.Serialize(stream, _users);
             }
         }
+
         private void LoadUsers()
         {
             var file = _xmlPath + _fileSerializationName;
