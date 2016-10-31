@@ -1,0 +1,50 @@
+﻿<Window x:Class="ShoppingCart.WPF.Users.RemoveWindow"
+        x:Name="RemoveUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Binding}"
+        Title="Remove User" Height="264.658" Width="300"
+        Icon="../Images/remove-user.png"
+        Background="Azure"
+        DataContext="{Binding Source={StaticResource ViewModelLocator} , Path=RemoveViewModel}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+               <RowDefinition Height="1*"/>
+               <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Image Source="../Images/remove-user.png"
+               Margin="10"></Image>
+        <Border Grid.RowSpan="2"
+                Grid.Column="1"
+                Style="{StaticResource BorderStyle}"
+                Margin="5">
+            <StackPanel>
+                <TextBlock Text="Choose user to delete :"
+                       Margin="5"/>
+                <ListBox x:Name="ListOfUsers" 
+                         ItemsSource="{Binding Users}"
+                         ItemTemplate="{StaticResource ItemList}"
+                         SelectedItem="{Binding SelectedUser}"
+                         Height="150"
+                         Width="100"
+                         Margin="5"
+                         HorizontalContentAlignment="Stretch" />
+                <Button x:Name="DeleteUserButton" Width="50" 
+                        Margin="5"
+                        Content="Delete"
+                        Command="{Binding RemoveUserCommand ,Mode=OneWay}"
+                        CommandParameter="{Binding ElementName=RemoveUserWindow }"
+                        IsEnabled="{Binding ElementName=ListOfUsers ,Path=SelectedItems.Count}" />
+
+            </StackPanel>
+        </Border>
+        
+    </Grid>
+</Window>
